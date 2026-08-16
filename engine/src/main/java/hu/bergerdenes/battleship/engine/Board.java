@@ -43,10 +43,10 @@ public class Board {
      */
     private List<ShipOnBoardConfiguration> determineShipConfiguration() {
         return List.of(
-            new ShipOnBoardConfiguration(5, 1),
-            new ShipOnBoardConfiguration(4, 2),
-            new ShipOnBoardConfiguration(3, 3),
-            new ShipOnBoardConfiguration(2, 2),
+//            new ShipOnBoardConfiguration(5, 1),
+//            new ShipOnBoardConfiguration(4, 2),
+//            new ShipOnBoardConfiguration(3, 3),
+//            new ShipOnBoardConfiguration(2, 2),
             new ShipOnBoardConfiguration(1, 1)
         );
     }

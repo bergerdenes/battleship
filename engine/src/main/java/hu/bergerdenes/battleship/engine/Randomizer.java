@@ -12,9 +12,10 @@ class Randomizer {
         this.boardSize = boardSize;
     }
 
+    // TOOD: update test! check for bounds!
     Point getRandomPoint(int shipSize, Orientation orientation) {
-        int row = secureRandom.nextInt(boardSize - (orientation == Orientation.HORIZONTAL ? shipSize : 0));
-        int col = secureRandom.nextInt(boardSize - (orientation == Orientation.VERTICAL ? shipSize : 0));
+        int row = secureRandom.nextInt(boardSize - (orientation == Orientation.HORIZONTAL ? shipSize : 1));
+        int col = secureRandom.nextInt(boardSize - (orientation == Orientation.VERTICAL ? shipSize : 1));
         return new Point(row, col);
     }
 

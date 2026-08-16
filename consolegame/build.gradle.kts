@@ -25,3 +25,9 @@ application {
     applicationName = "battleship"
     mainClass.set("hu.bergerdenes.battleship.Starter")
 }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}

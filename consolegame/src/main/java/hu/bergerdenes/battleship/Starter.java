@@ -15,7 +15,7 @@ public class Starter {
 
     static void main(String[] args) {
         Board board = new Board(10);
-//        System.out.println(board);
+        System.out.println(board);
         System.out.println("Game starts.");
         LocalDateTime startTime = LocalDateTime.now();
         boolean gameOver;
