@@ -53,5 +53,7 @@ jlink {
     options = listOf("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages")
     launcher {
         name = "battleship-game"
+        jvmArgs = listOf("--enable-native-access=javafx.graphics,javafx.media")
+        noConsole = true
     }
 }

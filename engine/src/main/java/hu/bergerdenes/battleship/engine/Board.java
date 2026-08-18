@@ -18,7 +18,6 @@ public class Board {
     }
 
     public ShotResult shoot(Point hitPoint) {
-        ShotResult shotResult;
         for (Ship ship : this.ships) {
             ShipShotResult shipShotResult = ship.checkHit(hitPoint);
             if (shipShotResult.hit()) {
@@ -28,7 +27,7 @@ public class Board {
                 return new ShotResult(shipShotResult, sankShips == ships.size());
             }
         }
-        return new ShotResult(new ShipShotResult(false, false), sankShips == ships.size());
+        return new ShotResult(new ShipShotResult(null, 0, null, null, false, false), sankShips == ships.size());
     }
 
     private void determineShipPlacement() {

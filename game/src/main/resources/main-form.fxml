@@ -33,7 +33,6 @@
 -->
 
 <?import java.net.URL?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -43,8 +42,6 @@
 <?import javafx.scene.media.Media?>
 <?import javafx.scene.media.MediaPlayer?>
 <?import javafx.scene.media.MediaView?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.bergerdenes.battleship.controllers.MainFormController">
     <children>
@@ -63,7 +60,7 @@
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" text="Preferences…" />
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="menuItemQuit" fx:id="menuItemQuit" mnemonicParsing="false" onAction="#onMenuitemQuit" text="Quit" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
@@ -82,12 +79,12 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                        <MenuItem id="menuItemAboutAction" fx:id="menuItemAboutAction" mnemonicParsing="false" onAction="#onMenuItemAboutAction" text="About Battleship" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" fx:id="anchorPane1">
+        <AnchorPane fx:id="anchorPane1" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
 <!--            <children>-->
 <!--                <Rectangle fx:id="cell11" strokeWidth="0.3" fill="DODGERBLUE" height="25.0" layoutX="23.0" layoutY="24.0" onMouseClicked="#onMouseClick" stroke="BLACK" strokeType="INSIDE" width="25.0" />-->
 <!--                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="48.0" layoutY="24.0" onMouseClicked="#onMouseClick" stroke="BLACK" strokeType="INSIDE" width="25.0" />-->
@@ -191,7 +188,7 @@
 <!--                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="248.0" layoutY="249.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />-->
 <!--            </children>-->
         </AnchorPane>
-        <MediaView fitHeight="0.0" fitWidth="0.0" fx:id="mediaView">
+        <MediaView fx:id="mediaView" fitHeight="0.0" fitWidth="0.0">
             <mediaPlayer>
                 <MediaPlayer fx:id="mediaPlayer">
                     <media>

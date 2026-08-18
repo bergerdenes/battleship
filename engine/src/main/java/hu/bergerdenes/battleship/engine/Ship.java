@@ -16,20 +16,10 @@ public class Ship {
         this.cells = initCells(size);
     }
 
-    public Point getTopLeft() {
-        return topLeft;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public Orientation getOrientation() {
-        return orientation;
-    }
-
-    public State[] getCells() {
-        return Arrays.copyOf(cells, cells.length);
+    private State[] initCells(int size) {
+        State[] cells = new State[size];
+        Arrays.fill(cells, State.INTACT);
+        return cells;
     }
 
     public boolean isSunk() {
@@ -39,18 +29,12 @@ public class Ship {
     public ShipShotResult checkHit(Point hitPoint) {
         if (hitPoint.row() < this.topLeft.row() || hitPoint.row() > bottomRow() ||
             hitPoint.column() < this.topLeft.column() || hitPoint.column() > rightColumn()) {
-            return new ShipShotResult(false, isSunk());
+            return new ShipShotResult(this.topLeft, this.size, this.orientation, this.cells, false, isSunk());
         }
         boolean wasHit = updateIfHit(this.orientation == Orientation.HORIZONTAL
             ? hitPoint.column() - this.topLeft.column()
             : hitPoint.row() - this.topLeft.row());
-        return new ShipShotResult(wasHit, isSunk());
-    }
-
-    private State[] initCells(int size) {
-        State[] cells = new State[size];
-        Arrays.fill(cells, State.INTACT);
-        return cells;
+        return new ShipShotResult(this.topLeft, this.size, this.orientation, this.cells, wasHit, isSunk());
     }
 
     private boolean updateIfHit(int cellIndex) {
