@@ -47,6 +47,7 @@ application {
     applicationName = "battleship"
     mainClass.set("hu.bergerdenes.battleship.Launcher")
     mainModule.set("battleship.game")
+    applicationDefaultJvmArgs = listOf("--enable-native-access=javafx.graphics,javafx.media")
 }
 
 jlink {
