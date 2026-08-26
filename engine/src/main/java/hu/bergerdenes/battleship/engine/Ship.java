@@ -2,6 +2,9 @@ package hu.bergerdenes.battleship.engine;
 
 import java.util.Arrays;
 
+import hu.bergerdenes.battleship.interfaces.Point;
+import hu.bergerdenes.battleship.interfaces.ShipShotResult;
+
 public class Ship {
     private final Point topLeft;
     private final int size;
@@ -46,9 +49,9 @@ public class Ship {
         return false;
     }
 
-    public boolean hasCollision(Ship otherShip) {
-        return this.topLeft.row() <= otherShip.bottomRow() && otherShip.topLeft.row() <= this.bottomRow() &&
-            this.topLeft.column() <= otherShip.rightColumn() && otherShip.topLeft.column() <= this.rightColumn();
+    public boolean isAdjacentOrOverlapping(Ship otherShip) {
+        return this.topLeft.row() - 1 <= otherShip.bottomRow() && otherShip.topLeft.row() <= this.bottomRow() + 1 &&
+            this.topLeft.column() - 1 <= otherShip.rightColumn() && otherShip.topLeft.column() <= this.rightColumn() + 1;
     }
 
     private int bottomRow() {
