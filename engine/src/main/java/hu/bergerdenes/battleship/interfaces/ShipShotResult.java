@@ -1,6 +1,9 @@
-package hu.bergerdenes.battleship.engine;
+package hu.bergerdenes.battleship.interfaces;
 
 import java.util.Arrays;
+
+import hu.bergerdenes.battleship.engine.Orientation;
+import hu.bergerdenes.battleship.engine.State;
 
 public record ShipShotResult(
     Point topLeft,

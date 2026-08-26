@@ -5,10 +5,10 @@ import java.time.LocalDateTime;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import hu.bergerdenes.battleship.engine.Board;
-import hu.bergerdenes.battleship.engine.Point;
-import hu.bergerdenes.battleship.engine.ShipShotResult;
-import hu.bergerdenes.battleship.engine.ShotResult;
+import hu.bergerdenes.battleship.interfaces.Board;
+import hu.bergerdenes.battleship.interfaces.Point;
+import hu.bergerdenes.battleship.interfaces.ShipShotResult;
+import hu.bergerdenes.battleship.interfaces.ShotResult;
 
 public class Starter {
     private static final Scanner scanner = new Scanner(System.in);

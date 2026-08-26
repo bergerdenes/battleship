@@ -1,14 +1,19 @@
-package hu.bergerdenes.battleship.engine;
+package hu.bergerdenes.battleship.interfaces;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import hu.bergerdenes.battleship.engine.Orientation;
+import hu.bergerdenes.battleship.engine.Randomizer;
+import hu.bergerdenes.battleship.engine.Ship;
+import hu.bergerdenes.battleship.engine.ShipOnBoardConfiguration;
+
 public class Board {
 
     private final int boardSize;
     private final Randomizer randomizer;
-    private List<Ship> ships = new ArrayList<>();
+    private final List<Ship> ships = new ArrayList<>();
     private int sankShips = 0;
 
     public Board(int boardSize) {
@@ -32,9 +37,7 @@ public class Board {
 
     private void determineShipPlacement() {
         List<ShipOnBoardConfiguration> shipConfigurations = determineShipConfiguration();
-        this.ships = shipConfigurations.stream()
-            .flatMap(cfg -> placeShips(cfg).stream())
-            .toList();
+        shipConfigurations.forEach(this::placeShips);
     }
 
     /**
@@ -42,20 +45,18 @@ public class Board {
      */
     private List<ShipOnBoardConfiguration> determineShipConfiguration() {
         return List.of(
-//            new ShipOnBoardConfiguration(5, 1),
-//            new ShipOnBoardConfiguration(4, 2),
-//            new ShipOnBoardConfiguration(3, 3),
-//            new ShipOnBoardConfiguration(2, 2),
+            new ShipOnBoardConfiguration(5, 1),
+            new ShipOnBoardConfiguration(4, 2),
+            new ShipOnBoardConfiguration(3, 3),
+            new ShipOnBoardConfiguration(2, 2),
             new ShipOnBoardConfiguration(1, 1)
         );
     }
 
-    private List<Ship> placeShips(ShipOnBoardConfiguration cfg) {
-        List<Ship> result = new ArrayList<>();
+    private void placeShips(ShipOnBoardConfiguration cfg) {
         for (int i = 0; i < cfg.shipCount(); i++) {
-            result.add(placeShip(cfg.shipSize()));
+            ships.add(placeShip(cfg.shipSize()));
         }
-        return List.copyOf(result);
     }
 
     private Ship placeShip(int shipSize) {
@@ -70,7 +71,7 @@ public class Board {
     }
 
     private boolean checkShipPlaceable(Ship probe) {
-        return ships.stream().noneMatch(ship -> ship.hasCollision(probe));
+        return ships.stream().noneMatch(ship -> ship.isAdjacentOrOverlapping(probe));
     }
 
     @Override

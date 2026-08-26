@@ -1,3 +1,3 @@
 module battleship.engine {
-    exports hu.bergerdenes.battleship.engine;
+    exports hu.bergerdenes.battleship.interfaces;
 }
