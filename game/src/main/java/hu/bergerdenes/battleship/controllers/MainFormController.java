@@ -33,6 +33,7 @@ public class MainFormController {
     public AnchorPane anchorPane;
     public Label labelGameOver;
     public Label labelShots;
+    public Label labelAccuracy;
     private AudioClip sinkClip;
     private AudioClip hitClip;
     private AudioClip shootClip;
@@ -41,6 +42,7 @@ public class MainFormController {
     private GameState gameState;
     private Cell[][] gridCells;
     private int shotsFired;
+    private int hits;
 
     public void onMenuItemQuit(ActionEvent actionEvent) {
         Platform.exit();
@@ -59,6 +61,7 @@ public class MainFormController {
         addGridCells();
         gameState = GameState.PLAYING;
         shotsFired = 0;
+        hits = 0;
         updateShotsFiredLabel();
         labelGameOver.setVisible(false);
     }
@@ -131,6 +134,7 @@ public class MainFormController {
         System.out.println(board.toString());
         ShipShotResult shipShotResult = shotResult.shipShotResult();
         if (shipShotResult.hit()) {
+            hits++;
             if (shipShotResult.sank()) {
                 sinkClip.play();
             } else {
@@ -143,6 +147,7 @@ public class MainFormController {
 //            System.out.println("You missed!");
             cell.setFill(DODGERBLUE);
         }
+        labelAccuracy.setText(String.format("Accuracy: %d%%", (int) ((double) hits / (shotsFired == 0 ? 1 : shotsFired)  * 100)));
         return shotResult.gameOver();
     }
 

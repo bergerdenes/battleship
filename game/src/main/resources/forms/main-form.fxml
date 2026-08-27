@@ -48,7 +48,7 @@
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem id="menuItemNew" fx:id="menuItemNew" mnemonicParsing="false" text="New" onAction="#onMenuItemNew" />
+                        <MenuItem id="menuItemNew" fx:id="menuItemNew" mnemonicParsing="false" onAction="#onMenuItemNew" text="New" />
                         <MenuItem mnemonicParsing="false" text="Open…" />
                         <Menu mnemonicParsing="false" text="Open Recent" />
                         <SeparatorMenuItem mnemonicParsing="false" />
@@ -84,6 +84,11 @@
             <Label fx:id="labelShots" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="342.0" layoutY="26.0" text="0 shots" visible="true">
                <font>
                   <Font size="42.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelAccuracy" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="342.0" layoutY="249.0" text="Accuracy: -%" visible="true">
+               <font>
+                  <Font size="24.0" />
                </font>
             </Label>
          </children>
